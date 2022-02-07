@@ -1,16 +1,15 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import { Box } from "@mui/material";
+import Navbar from "../components/Navbar";
 
 export const General = () => {
   return (
-    <div>
+    <Box>
       <Navbar />
-      <main>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
-    </div>
+    </Box>
   );
 };

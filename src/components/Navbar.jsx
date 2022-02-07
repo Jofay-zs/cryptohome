@@ -1,8 +1,49 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import { makeStyles } from "@mui/styles";
+import MenuIcon from "@mui/icons-material/Menu";
+import cryptoIcon from "../images/cryptocurrency.ico";
+import { Box } from "@mui/material";
+import Sidebar from "./Sidebar";
+
+const useStyles = makeStyles((theme) => ({
+  container: { width: "100vw" },
+  toolbar: {
+    backgroundColor: "#2c3f68",
+    boxShadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+}));
 
 const Navbar = () => {
-  return <div className="">Navbar</div>;
+  const classes = useStyles();
+  const [isOpenNavbar, setIsOpenNavbar] = React.useState(false);
+
+  return (
+    <div className={classes.container}>
+      <AppBar position="sticky">
+        <Toolbar className={classes.toolbar}>
+          <IconButton
+            edge="end"
+            onClick={() => {
+              setIsOpenNavbar(!isOpenNavbar);
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6"></Typography>
+          <Box display="flex" alignItems={"center"}>
+            <img src={cryptoIcon} alt="Three coins" width={40} />
+            <Typography variant="h5" components="span">
+              Cryptohome
+            </Typography>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      {isOpenNavbar ? <Sidebar /> : <></>}
+    </div>
+  );
 };
 
 export default Navbar;
