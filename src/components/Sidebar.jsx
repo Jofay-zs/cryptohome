@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "@mui/material";
 import { Sidebardata } from "./Sidebardata";
-import { List, ListItemIcon, ListItem, ListItemText, Button } from "@mui/material";
+import { ListItemIcon, ListItemText } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import { Link } from "react-router-dom";
 import { Grid } from "@mui/material";
@@ -17,14 +17,11 @@ const useStyles = makeStyles((theme) => ({
   },
   listItemLink: {
     textDecoration: "none",
-    color: "inherit",
+    color: "#fff",
     display: "flex",
     alignItems: "center",
   },
-  listItemIcon: {
-    color: "#fff",
-  },
-  listItemText: {
+  icon: {
     color: "#fff",
   },
 }));
@@ -38,24 +35,18 @@ const Sidebar = () => {
           return (
             <Grid
               item
-              button
               xs={12}
               sm={6}
               md={4}
               key={key}
               className={classes.listItem}
             >
-              <Button variant="text">
-                <Link to={i.link} className={classes.listItemLink}>
-                  <ListItemIcon className={classes.listItemIcon}>
-                    {i.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={i.title}
-                    className={classes.listItemText}
-                  />
-                </Link>
-              </Button>
+              <Link to={i.link} className={classes.listItemLink}>
+                <ListItemIcon>
+                  <span className={classes.icon}>{i.icon}</span>
+                </ListItemIcon>
+                <ListItemText>{i.title}</ListItemText>
+              </Link>
             </Grid>
           );
         })}

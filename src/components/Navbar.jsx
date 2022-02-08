@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
   },
+  icon: {
+    color: "#fff",
+  },
 }));
 
 const Navbar = () => {
@@ -26,11 +29,14 @@ const Navbar = () => {
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="end"
+            className={classes.icon}
             onClick={() => {
               setIsOpenNavbar(!isOpenNavbar);
             }}
           >
-            <MenuIcon />
+            <span className={classes.icon}>
+              <MenuIcon />
+            </span>
           </IconButton>
           <Typography variant="h6"></Typography>
           <Box display="flex" alignItems={"center"}>
